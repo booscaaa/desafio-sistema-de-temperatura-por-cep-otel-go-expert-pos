@@ -10,6 +10,7 @@ import (
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/internal/dto"
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/internal/entity"
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/pkg/adapter/errorhandle"
+	"go.opentelemetry.io/otel"
 )
 
 var (
@@ -27,6 +28,10 @@ func NewCepHTTPClient(client *http.Client) entity.CepHTTPClient {
 }
 
 func (httpclient httpclient) Get(ctx context.Context, cep string) (*entity.Cep, error) {
+	tr := otel.Tracer("microservice-trace")
+	ctx, span := tr.Start(ctx, "get cep")
+	defer span.End()
+
 	var cepOutput dto.CepOutput
 	url := fmt.Sprintf("%s/ws/%s/json/", BASE_URL, cep)
 

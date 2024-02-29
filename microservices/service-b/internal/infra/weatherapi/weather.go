@@ -11,6 +11,7 @@ import (
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/internal/dto"
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/internal/entity"
 	"github.com/spf13/viper"
+	"go.opentelemetry.io/otel"
 )
 
 var (
@@ -28,6 +29,9 @@ func NewWeatherHTTPClient(client *http.Client) entity.WeatherHTTPClient {
 }
 
 func (httpclient httpclient) Get(ctx context.Context, cityName string) (*entity.Weather, error) {
+	tr := otel.Tracer("microservice-trace")
+	ctx, span := tr.Start(ctx, "get weather")
+	defer span.End()
 	weatherApiKey := viper.GetString("weather_api_key")
 	var weatherOutput dto.WeatherOutput
 

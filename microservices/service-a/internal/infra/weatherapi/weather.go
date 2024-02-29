@@ -29,6 +29,10 @@ func NewWeatherHTTPClient(client *http.Client) entity.WeatherHTTPClient {
 }
 
 func (httpclient httpclient) Get(ctx context.Context, cep string) (*dto.WeatherOutput, error) {
+	tr := otel.Tracer("microservice-trace")
+	ctx, span := tr.Start(ctx, "get weather from service b")
+	defer span.End()
+
 	var weatherOutput dto.WeatherOutput
 
 	url := fmt.Sprintf("%s/%s", BASE_URL, cep)

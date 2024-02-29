@@ -43,7 +43,7 @@ func (controller controller) Get(response http.ResponseWriter, request *http.Req
 	ctx = otel.GetTextMapPropagator().Extract(ctx, carrier)
 
 	tr := otel.Tracer("microservice-trace")
-	ctx, span := tr.Start(ctx, "servive a")
+	ctx, span := tr.Start(ctx, "get weather")
 	defer span.End()
 
 	time.Sleep(time.Millisecond * 1000)

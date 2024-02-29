@@ -4,7 +4,6 @@ import (
 	"context"
 
 	"github.com/booscaaa/desafio-sistema-de-temperatura-por-cep-otel-go-expert-pos/microservices/service-b/internal/entity"
-	"go.opentelemetry.io/otel/trace"
 )
 
 type usecase struct {
@@ -23,8 +22,6 @@ func NewWeatherUseCase(
 }
 
 func (usecase usecase) Get(ctx context.Context, cep string) (*entity.Weather, error) {
-	parentSpan := trace.SpanFromContext(ctx)
-	defer parentSpan.End()
 	cepResponse, err := usecase.cepHTTPClient.Get(ctx, cep)
 
 	if err != nil {

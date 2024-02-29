@@ -42,10 +42,6 @@ func (controller controller) Get(response http.ResponseWriter, request *http.Req
 	ctx := request.Context()
 	ctx = otel.GetTextMapPropagator().Extract(ctx, carrier)
 
-	tr := otel.Tracer("microservice-trace")
-	ctx, span := tr.Start(ctx, "servive b")
-	defer span.End()
-
 	time.Sleep(time.Millisecond * 1000)
 
 	cep, err := dto.FromQueryStringRequestToCep(chi.URLParam(request, "cep"), controller.validator)
