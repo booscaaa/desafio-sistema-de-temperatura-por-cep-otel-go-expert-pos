@@ -1,6 +1,6 @@
 # Desafio do Sistema de Temperatura com CEP
 ## Objetivo
-Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um CEP válido, identifica a cidade correspondente e retorna o clima atual em diferentes unidades de temperatura: Celsius, Fahrenheit e Kelvin. O sistema é hospedado no Google Cloud Run.
+Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um CEP válido, identifica a cidade correspondente e retorna o clima atual em diferentes unidades de temperatura: Celsius, Fahrenheit e Kelvin.
 
 ## Requisitos do Sistema
 ### Requisitos - Serviço A (responsável pelo input):
@@ -73,11 +73,6 @@ Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um C
 
 - Zipkin
   - HOST: http://localhost:9411
-
-### Ambiente de Produção
-  - Server: https://desafio-sistema-de-temperatura-por-cep-go-expert--i7bjj44hla-rj.a.run.app
-  - Swagger: https://desafio-sistema-de-temperatura-por-cep-go-expert--i7bjj44hla-rj.a.run.app/swagger/index.html
-  - Endpoint para validação: https://desafio-sistema-de-temperatura-por-cep-go-expert--i7bjj44hla-rj.a.run.app/cep/{CEP}
 
 
 # Testes Automatizados
