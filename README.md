@@ -1,4 +1,4 @@
-# Desafio do Sistema de Temperatura com CEP
+# Desafio do Sistema de Temperatura com CEP com Open Telemetry
 ## Objetivo
 Este projeto em Go tem como objetivo desenvolver um sistema que, ao receber um CEP válido, identifica a cidade correspondente e retorna o clima atual em diferentes unidades de temperatura: Celsius, Fahrenheit e Kelvin.
 
